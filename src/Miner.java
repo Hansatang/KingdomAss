@@ -5,9 +5,9 @@ public class Miner implements Runnable
   private String name;
   private Valuable retrievedValuable;
   private Mine mine;
-  private Deposit deposit;
+  private DepositInterface deposit;
 
-  public Miner(String name, Mine mine, Deposit deposit)
+  public Miner(String name, Mine mine, DepositInterface deposit)
   {
     this.name = name;
     this.retrievedValuable = null;
@@ -21,7 +21,7 @@ public class Miner implements Runnable
     {
       retrievedValuable = mine.getResources();
       System.out.println("I mined "+retrievedValuable.getResourceType());
-      work(100);
+      work(200);
       try
       {
         deposit.addValuables(retrievedValuable);

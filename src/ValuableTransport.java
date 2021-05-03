@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class ValuableTransport implements Runnable
 {
   private ArrayList<Valuable> list;
+  private String name;
   private int worth = 0;
   private int limit = (int) (Math.random() * 150 + 50);
-  private Deposit deposit;
+  private DepositInterface deposit;
 
-  public ValuableTransport(Deposit deposit)
+  public ValuableTransport(String name,DepositInterface deposit)
   {
+    this.name=name;
     this.list = new ArrayList<>();
     this.deposit = deposit;
   }
@@ -27,15 +29,16 @@ public class ValuableTransport implements Runnable
       {
         e.printStackTrace();
       }
-      System.out.println("I prepared for transport " + list.get(list.size() - 1)
-          .getResourceType() + " but i need " + (limit - worth) + " more");
+      System.out.println("Me, "+name +" prepared for transport " + list.get(list.size() - 1)
+          .getResourceType() + " but I need " + (limit - worth) + " more");
       work(50);
       worth += list.get(list.size() - 1).getWorth();
       if (worth > limit)
       {
         System.out.println(
-            "delivered " + list.size() + " valuables and it was worth "
-                + worth);
+            "Delivered " + list.size() + " valuables and it was worth "
+                + worth+"to the treasury");
+
         worth = 0;
       }
     }

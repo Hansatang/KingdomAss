@@ -2,7 +2,7 @@ import Valuables.Valuable;
 
 import java.util.ArrayList;
 
-public class Deposit
+public class Deposit implements DepositInterface
 {
   private ArrayList<Valuable> resources;
   private int max = 10;
@@ -12,7 +12,7 @@ public class Deposit
     this.resources = new ArrayList<>();
   }
 
-  public void addValuables(Valuable retrievedValuable)
+  @Override public void addValuables(Valuable retrievedValuable)
       throws InterruptedException
   {
     synchronized (this)
@@ -27,7 +27,7 @@ public class Deposit
 
   }
 
-  public synchronized Valuable getValuables() throws InterruptedException
+  @Override public Valuable getValuables() throws InterruptedException
   {
     synchronized (this)
     {
