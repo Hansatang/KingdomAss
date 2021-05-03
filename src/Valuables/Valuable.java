@@ -9,6 +9,7 @@ public class Valuable
 
   public int getWorth()
   {
+    return 0;
   }
 
   public static Valuable getInstance(String key)

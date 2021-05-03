@@ -3,14 +3,14 @@ import Valuables.Valuable;
 public class Miner implements Runnable
 {
   private String name;
-  private Valuable valuable;
+  private Valuable retrievedValuable;
   private Mine mine;
   private Deposit deposit;
 
   public Miner(String name, Valuable valuable, Mine mine, Deposit deposit)
   {
     this.name = name;
-    this.valuable = valuable;
+    this.retrievedValuable = valuable;
     this.mine = mine;
     this.deposit = deposit;
   }
@@ -19,10 +19,11 @@ public class Miner implements Runnable
   {
     while (true)
     {
-      valuable = mine.getResources();
+      retrievedValuable = mine.getResources();
+      System.out.println("I mined "+retrievedValuable);
       work(100);
-      deposit.depositValuables();
-      valuable = null;
+      deposit.addValuables(retrievedValuable);
+      retrievedValuable = null;
 
     }
   }

@@ -7,8 +7,9 @@ public class Mine
 
   private ArrayList<Valuable> resources;
 
-  public Valuable getResources()
+  public synchronized Valuable getResources()
   {
-
+    int random = (int) (Math.random() * resources.size() - 1);
+    return resources.get(random);
   }
 }
