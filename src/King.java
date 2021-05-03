@@ -21,6 +21,7 @@ public class King implements Runnable
       spendTime(1000);
       System.out.println("Im asking for write");
       treasureRoomDoor.acquireWrite();
+
       for (int i = 0; i < treasureRoomDoor.getSize; i++)
       {
         list.add(treasureRoomDoor.retrieveValuables());
@@ -30,11 +31,17 @@ public class King implements Runnable
           break;
         }
       }
+      if (worth > limit)
+      {
+        System.out.println("Party time");
+        list.clear();
+        spendTime(6000);
+      }
       if (worth < limit)
       {
+        System.out.println("Too poor for party");
         treasureRoomDoor.addValuables(list);
       }
-
       treasureRoomDoor.releaseWrite();
       System.out.println("Im releasing the write");
     }
