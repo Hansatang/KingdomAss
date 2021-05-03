@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class Guard implements TreasureRoomDoor
 {
-  private ArrayList<Valuable> valuables;
   private TreasureRoomDoor treasureRoomDoor;
 
-  public Guard() {
-    valuables = new ArrayList<>();
+  public Guard(TreasureRoomDoor treasureRoomDoor) {
+    this.treasureRoomDoor = treasureRoomDoor;
   }
 
   @Override
@@ -18,12 +17,32 @@ public class Guard implements TreasureRoomDoor
 
   @Override
   public Valuable retrieveValuables() {
-    return null;
+    return treasureRoomDoor.retrieveValuables();
   }
 
   @Override
   public ArrayList<Valuable> lookAtValuables() {
-    return null;
+    return treasureRoomDoor.lookAtValuables();
+  }
+
+  @Override
+  public void aquireRead() {
+    treasureRoomDoor.aquireRead();
+  }
+
+  @Override
+  public void aquireWrite() {
+    treasureRoomDoor.aquireWrite();
+  }
+
+  @Override
+  public void releaseRead() {
+    treasureRoomDoor.releaseRead();
+  }
+
+  @Override
+  public void releaseWrite() {
+    treasureRoomDoor.releaseWrite();
   }
 
 }

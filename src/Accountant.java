@@ -21,8 +21,7 @@ public class Accountant implements Runnable {
         while (true) {
             
             
-            treasureRoomDoor.aqquireRead();
-            spendTime(1000);
+            treasureRoomDoor.aquireRead();
             for (int i = 0; i < treasureRoomDoor.getSize; i++) {
 
                 sum+=list.get(i).getWorth();

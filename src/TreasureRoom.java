@@ -26,6 +26,26 @@ public class TreasureRoom implements TreasureRoomDoor {
     }
 
     @Override
+    public void aquireRead() {
+
+    }
+
+    @Override
+    public void aquireWrite() {
+
+    }
+
+    @Override
+    public void releaseRead() {
+
+    }
+
+    @Override
+    public void releaseWrite() {
+
+    }
+
+    @Override
     public String toString() {
         return "TreasureRoom{" +
                 "valuables=" + valuables +
