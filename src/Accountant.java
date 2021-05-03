@@ -30,6 +30,7 @@ public class Accountant implements Runnable {
             }
 
             logger.log(String.valueOf(sum));
+            treasureRoomDoor.releaseRead();
             spendTime(1000);
 
         }
