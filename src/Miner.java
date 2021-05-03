@@ -20,7 +20,7 @@ public class Miner implements Runnable
     while (true)
     {
       retrievedValuable = mine.getResources();
-      System.out.println("I mined "+retrievedValuable);
+      System.out.println("I mined "+retrievedValuable.getResourceType());
       work(100);
       try
       {

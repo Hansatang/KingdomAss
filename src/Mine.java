@@ -11,7 +11,7 @@ public class Mine
   public Mine()
   {
     this.resources = new ArrayList<>();
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 10; i++)
     {
       int random = (int) (Math.random() * 3 + 1);
       if (random == 1)

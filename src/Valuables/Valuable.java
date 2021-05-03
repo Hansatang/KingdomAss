@@ -30,6 +30,10 @@ public class Valuable {
         return worth;
     }
 
+    public ResourceType getResourceType(){
+        return resource;
+    }
+
     public static Valuable getInstance(ResourceType resourceType) {
         Valuable instance = allInstances.get(resourceType);
         if (instance == null) {

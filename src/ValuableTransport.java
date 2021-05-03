@@ -27,13 +27,16 @@ public class ValuableTransport implements Runnable
       {
         e.printStackTrace();
       }
-      System.out.println("I prepared for transport "+list.get(list.size() - 1).toString());
-      work(100);
-      worth += list.get(list.size() + 1).getWorth();
+      System.out.println("I prepared for transport " + list.get(list.size() - 1)
+          .getResourceType() + " but i need " + (limit - worth) + " more");
+      work(50);
+      worth += list.get(list.size() - 1).getWorth();
       if (worth > limit)
       {
         System.out.println(
-            "delivered " + list.size() + "valuables and it was worth " + worth);
+            "delivered " + list.size() + " valuables and it was worth "
+                + worth);
+        worth = 0;
       }
     }
   }
