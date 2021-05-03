@@ -16,8 +16,8 @@ public class TreasureRoom implements TreasureRoomDoor {
     }
 
     @Override
-    public void retrieveValuables(ArrayList<Valuable> listOfValuables) {
-        valuables.removeAll(listOfValuables);
+    public Valuable retrieveValuables() {
+       return valuables.remove(0);
     }
 
     @Override
