@@ -19,17 +19,10 @@ public class ValuableTransport implements Runnable
   {
     while (true)
     {
-      try
-      {
-        list.add(deposit.getValuables());
-      }
-      catch (InterruptedException e)
-      {
-        e.printStackTrace();
-      }
-      System.out.println("I prepared for transport "+list.get(list.size() + 1).toString());
+      list.add(deposit.getResource());
+      System.out.println("I prepared for transport "+list.get(list.size() - 1).toString());
       work(100);
-      worth += list.get(list.size() + 1).getWorth();
+      worth += list.get(list.size() - 1).getWorth();
       if (worth > limit)
       {
         System.out.println(

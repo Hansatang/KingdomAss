@@ -28,9 +28,8 @@ public class Mine
     }
   }
 
-  public synchronized Valuable getResources()
+  public Valuable getResources()
   {
-    int random = (int) (Math.random() * resources.size() - 1);
-    return resources.get(random);
+
   }
 }
