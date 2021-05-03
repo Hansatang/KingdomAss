@@ -19,8 +19,9 @@ public class CreateKingdom
     King king = new King(guard);
     Thread t5 = new Thread(king);
 
-//    Accountant accountant = new Accountant(guard);
-//    Thread t6 = new Thread(accountant);
+
+    Accountant accountant = new Accountant(guard);
+    Thread t6 = new Thread(accountant);
 
 
     t1.start();
@@ -28,6 +29,6 @@ public class CreateKingdom
     t3.start();
     t4.start();
     t5.start();
-//    t6.start();
+    t6.start();
   }
 }

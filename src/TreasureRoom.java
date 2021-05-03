@@ -24,7 +24,7 @@ public class TreasureRoom implements TreasureRoomDoor
 
   @Override public Valuable retrieveValuables()
   {
-    System.out.println("                                          I just gave back "+ valuables.get(0));
+    System.out.println("                                          I just gave back "+ valuables.get(0).getResourceType());
     return valuables.remove(0);
   }
 
@@ -78,7 +78,7 @@ public class TreasureRoom implements TreasureRoomDoor
     System.out.println("acquireWrite calls " + writers);
   }
 
-  @Override public void releaseRead()
+  @Override synchronized public void releaseRead()
   {
     System.out.println("releaseRead calls ");
     readers--;
@@ -88,7 +88,7 @@ public class TreasureRoom implements TreasureRoomDoor
     }
   }
 
-  @Override public void releaseWrite()
+  @Override synchronized public void releaseWrite()
   {
     writers--;
     System.out.println("releaseWrite calls " + writers);
