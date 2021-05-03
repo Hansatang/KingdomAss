@@ -1,3 +1,9 @@
-public class Accountant
+public class Accountant implements Runnable
 {
+    @Override
+    public void run() {
+
+
+
+    }
 }
