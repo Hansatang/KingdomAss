@@ -1,3 +1,4 @@
+import Valuables.ResourceType;
 import Valuables.Valuable;
 
 import java.util.ArrayList;
@@ -15,15 +16,15 @@ public class Mine
       int random = (int) (Math.random() * 3 + 1);
       if (random == 1)
       {
-        resources.add();
+        resources.add(Valuable.getInstance(ResourceType.IRON));
       }
       else if (random == 2)
       {
-        resources.add();
+        resources.add(Valuable.getInstance(ResourceType.GOLD));
       }
       else
       {
-        resources.add();
+        resources.add(Valuable.getInstance(ResourceType.DIAMOND));
       }
     }
   }

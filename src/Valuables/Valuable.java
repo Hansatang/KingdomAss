@@ -7,13 +7,14 @@ import java.util.Map;
 public class Valuable {
     private ResourceType resource;
     private static Map<ResourceType, Valuable> allInstances = new HashMap<ResourceType, Valuable>();
-
+    private int worth;
 
     private Valuable(ResourceType resourceType) {
+        this.worth = getWorth(resourceType);
         this.resource = resourceType;
     }
 
-    public int getWorth(ResourceType resourceType) {
+    private int getWorth(ResourceType resourceType) {
         int worth = 0;
         if (getInstance(ResourceType.GOLD).equals(resourceType)) {
             worth = 5;
@@ -22,6 +23,10 @@ public class Valuable {
         } else if (getInstance(ResourceType.DIAMOND).equals(resourceType)) {
             worth = 7;
         }
+        return worth;
+    }
+
+    public int getWorth() {
         return worth;
     }
 
