@@ -22,9 +22,15 @@ public class Miner implements Runnable
       retrievedValuable = mine.getResources();
       System.out.println("I mined "+retrievedValuable);
       work(100);
-      deposit.addValuables(retrievedValuable);
+      try
+      {
+        deposit.addValuables(retrievedValuable);
+      }
+      catch (InterruptedException e)
+      {
+        e.printStackTrace();
+      }
       retrievedValuable = null;
-
     }
   }
 
