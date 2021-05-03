@@ -11,19 +11,22 @@ public class Mine
   public Mine()
   {
     this.resources = new ArrayList<>();
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 1; i++)
     {
       int random = (int) (Math.random() * 3 + 1);
       if (random == 1)
       {
+        System.out.println("Add iron");
         resources.add(Valuable.getInstance(ResourceType.IRON));
       }
       else if (random == 2)
       {
+        System.out.println("Add gold");
         resources.add(Valuable.getInstance(ResourceType.GOLD));
       }
       else
       {
+        System.out.println("Add diamond");
         resources.add(Valuable.getInstance(ResourceType.DIAMOND));
       }
     }

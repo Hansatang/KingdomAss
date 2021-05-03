@@ -10,17 +10,17 @@ public class Valuable {
     private int worth;
 
     private Valuable(ResourceType resourceType) {
-        this.worth = getWorth(resourceType);
         this.resource = resourceType;
+        this.worth = getWorth(resourceType);
     }
 
     private int getWorth(ResourceType resourceType) {
         int worth = 0;
-        if (getInstance(ResourceType.GOLD).equals(resourceType)) {
+        if (this.resource.equals(resourceType)) {
             worth = 5;
-        } else if (getInstance(ResourceType.IRON).equals(resourceType)) {
+        } else if (this.resource.equals(resourceType)) {
             worth = 3;
-        } else if (getInstance(ResourceType.DIAMOND).equals(resourceType)) {
+        } else if (this.resource.equals(resourceType)) {
             worth = 7;
         }
         return worth;
@@ -29,7 +29,6 @@ public class Valuable {
     public int getWorth() {
         return worth;
     }
-
 
     public static Valuable getInstance(ResourceType resourceType) {
         Valuable instance = allInstances.get(resourceType);
