@@ -11,11 +11,12 @@ public class ValuableTransport implements Runnable
   private DepositInterface deposit;
   private TreasureRoomDoor treasureRoomDoor;
 
-  public ValuableTransport(String name, DepositInterface deposit)
+  public ValuableTransport(String name, DepositInterface deposit,TreasureRoomDoor treasureRoomDoor)
   {
     this.name = name;
     this.list = new ArrayList<>();
     this.deposit = deposit;
+    this.treasureRoomDoor=treasureRoomDoor;
   }
 
   @Override public void run()

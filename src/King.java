@@ -12,38 +12,41 @@ public class King implements Runnable
   public King(TreasureRoomDoor treasureRoomDoor)
   {
     this.treasureRoomDoor = treasureRoomDoor;
+    this.list = new ArrayList<>();
   }
 
   @Override public void run()
   {
     while (true)
     {
-      spendTime(1000);
-      System.out.println("Im asking for write");
-      treasureRoomDoor.acquireWrite();
+      spendTime(4000);
+      System.out.println("                                                                                        Im asking for write");
+      treasureRoomDoor.aquireWrite();
 
-      for (int i = 0; i < treasureRoomDoor.getSize; i++)
+      for (int i = 0; i < treasureRoomDoor.getSize(); i++)
       {
         list.add(treasureRoomDoor.retrieveValuables());
-        worth += list.get(list.size() - 1).getWorth();
+        worth += list.get(i).getWorth();
         if (worth > limit)
         {
           break;
         }
       }
-      if (worth > limit)
+      if (worth >= limit)
       {
-        System.out.println("Party time");
+        System.out.println("                                                                                      Party time");
         list.clear();
         spendTime(6000);
       }
       if (worth < limit)
       {
-        System.out.println("Too poor for party");
+        System.out.println("                                                                                      Too poor for party "+worth);
         treasureRoomDoor.addValuables(list);
+        spendTime(2000);
       }
+      System.out.println("                                                                                        Im releasing the write");
       treasureRoomDoor.releaseWrite();
-      System.out.println("Im releasing the write");
+
     }
   }
 
@@ -60,4 +63,4 @@ public class King implements Runnable
   }
 
 }
-}
+

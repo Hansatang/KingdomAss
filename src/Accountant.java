@@ -22,7 +22,7 @@ public class Accountant implements Runnable {
             
             
             treasureRoomDoor.aquireRead();
-            for (int i = 0; i < treasureRoomDoor.getSize; i++) {
+            for (int i = 0; i < treasureRoomDoor.getSize(); i++) {
 
                 sum+=list.get(i).getWorth();
 

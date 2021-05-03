@@ -7,6 +7,7 @@ public interface TreasureRoomDoor {
     void addValuables(ArrayList<Valuable> valuables);
     Valuable retrieveValuables();
     ArrayList<Valuable> lookAtValuables();
+    int getSize();
 
     void aquireRead();
     void aquireWrite();

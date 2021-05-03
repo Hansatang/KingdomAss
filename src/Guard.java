@@ -11,37 +11,42 @@ public class Guard implements TreasureRoomDoor
   }
 
   @Override
-  public void addValuables(ArrayList<Valuable> listOfValuables) {
+  public synchronized void addValuables(ArrayList<Valuable> listOfValuables) {
     treasureRoomDoor.addValuables(listOfValuables);
   }
 
   @Override
-  public Valuable retrieveValuables() {
+  public synchronized Valuable retrieveValuables() {
     return treasureRoomDoor.retrieveValuables();
   }
 
   @Override
-  public ArrayList<Valuable> lookAtValuables() {
+  public synchronized ArrayList<Valuable> lookAtValuables() {
     return treasureRoomDoor.lookAtValuables();
   }
 
+  @Override synchronized public int getSize()
+  {
+    return treasureRoomDoor.getSize();
+  }
+
   @Override
-  public void aquireRead() {
+  public synchronized void aquireRead() {
     treasureRoomDoor.aquireRead();
   }
 
   @Override
-  public void aquireWrite() {
+  public synchronized void aquireWrite() {
     treasureRoomDoor.aquireWrite();
   }
 
   @Override
-  public void releaseRead() {
+  public synchronized void releaseRead() {
     treasureRoomDoor.releaseRead();
   }
 
   @Override
-  public void releaseWrite() {
+  public synchronized void releaseWrite() {
     treasureRoomDoor.releaseWrite();
   }
 
