@@ -9,6 +9,12 @@ public class ValuableTransport implements Runnable
   private int limit = (int) (Math.random() * 150 + 50);
   private Deposit deposit;
 
+  public ValuableTransport(Deposit deposit)
+  {
+    this.list = new ArrayList<>();
+    this.deposit = deposit;
+  }
+
   @Override public void run()
   {
     while (true)

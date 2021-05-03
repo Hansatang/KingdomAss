@@ -7,10 +7,10 @@ public class Miner implements Runnable
   private Mine mine;
   private Deposit deposit;
 
-  public Miner(String name, Valuable valuable, Mine mine, Deposit deposit)
+  public Miner(String name, Mine mine, Deposit deposit)
   {
     this.name = name;
-    this.retrievedValuable = valuable;
+    this.retrievedValuable = null;
     this.mine = mine;
     this.deposit = deposit;
   }
