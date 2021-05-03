@@ -5,30 +5,25 @@ import java.util.ArrayList;
 public class Guard implements TreasureRoomDoor
 {
   private ArrayList<Valuable> valuables;
+  private TreasureRoomDoor treasureRoomDoor;
 
   public Guard() {
     valuables = new ArrayList<>();
   }
+
   @Override
   public void addValuables(ArrayList<Valuable> listOfValuables) {
-
-    valuables.addAll(listOfValuables);
+    treasureRoomDoor.addValuables(listOfValuables);
   }
 
   @Override
-  public void retrieveValuables(ArrayList<Valuable> listOfValuables) {
-    valuables.removeAll(listOfValuables);
+  public Valuable retrieveValuables() {
+    return null;
   }
 
   @Override
   public ArrayList<Valuable> lookAtValuables() {
-    return valuables;
+    return null;
   }
 
-  @Override
-  public String toString() {
-    return "TreasureRoom{" +
-            "valuables=" + valuables +
-            '}';
-  }
 }
