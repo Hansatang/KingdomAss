@@ -16,11 +16,11 @@ public class Valuable {
 
     private int getWorth(ResourceType resourceType) {
         int worth = 0;
-        if (this.resource.equals(resourceType)) {
+        if (ResourceType.GOLD.equals(resourceType)) {
             worth = 5;
-        } else if (this.resource.equals(resourceType)) {
+        } else if (ResourceType.IRON.equals(resourceType)) {
             worth = 3;
-        } else if (this.resource.equals(resourceType)) {
+        } else if (ResourceType.DIAMOND.equals(resourceType)) {
             worth = 7;
         }
         return worth;
