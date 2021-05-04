@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Deposit implements DepositInterface
 {
   private ArrayList<Valuable> resources;
-  private int max = 4;
+  private int max = 50;
 
   public Deposit()
   {
