@@ -1,5 +1,6 @@
 import org.junit.Test;
-import utility.collection.ArrayList;
+
+import java.util.ArrayList;
 
 public class JUnitTest {
 

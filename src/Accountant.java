@@ -31,12 +31,10 @@ public class Accountant implements Runnable
         sum += list.get(i).getWorth();
         spendTime(1);
       }
-      logger.log("\n" + sum);
 //      treasureRoomDoor.releaseRead();
+      logger.log("\n" + sum);
       spendTime((int) (Math.random() * 4000 + 1000));
-
     }
-
   }
 
   public void spendTime(int sleepTime)
