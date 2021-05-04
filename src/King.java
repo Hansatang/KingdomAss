@@ -20,13 +20,11 @@ public class King implements Runnable
     while (true)
     {
       spendTime(4000);
-      System.out.println(
-          "                                                                                        Im asking for write");
+      System.out.println("\t\t\tIm asking for write");
       treasureRoomDoor.aquireWrite();
       int currentAmount = treasureRoomDoor.getSize();
       System.out.println(
-          "                                                                          "
-              + currentAmount);
+          "\t\t\t"+ currentAmount);
       for (int i = 0; i < currentAmount; i++)
       {
         list.add(treasureRoomDoor.retrieveValuables());
@@ -38,25 +36,24 @@ public class King implements Runnable
       }
       if (worth >= limit)
       {
-        System.out.println(
-            "                                                                                      Party time");
+        System.out.println("\t\t\tParty time");
         list.clear();
-        System.out.println(
-            "                                                                                        Im releasing the write");
-        System.out.println("                                                                          "+treasureRoomDoor.getSize());
+        System.out.println("\t\t\tIm releasing the write");
+        System.out.println("\t\t\t" + treasureRoomDoor.getSize());
         treasureRoomDoor.releaseWrite();
         spendTime(6000);
       }
       if (worth < limit)
       {
         System.out.println(
-            "                                                                                      Too poor for party "
+            "\t\t\tToo poor for party "
                 + worth);
         treasureRoomDoor.addValuables(list);
 
         System.out.println(
-            "                                                                                        Im releasing the write");
-        System.out.println("                                                                          "+treasureRoomDoor.getSize());
+            "\t\t\tIm releasing the write");
+        System.out.println(
+            "\t\t\t"+ treasureRoomDoor.getSize());
         treasureRoomDoor.releaseWrite();
         spendTime(2000);
       }
