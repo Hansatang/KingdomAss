@@ -9,7 +9,7 @@ public class TreasureRoom implements TreasureRoomDoor
   private int k = 0;
   private int readers = 0;
   private int writers = 0;
-  private int waitingWriters;
+  private boolean waitingWriter;
 
   public TreasureRoom()
   {
@@ -18,13 +18,13 @@ public class TreasureRoom implements TreasureRoomDoor
 
   @Override public void addValuables(ArrayList<Valuable> listOfValuables)
   {
-    System.out.println("                                          I just added "+listOfValuables.size());
+    System.out.println("\t\t\tI just added "+listOfValuables.size());
     valuables.addAll(listOfValuables);
   }
 
   @Override public Valuable retrieveValuables()
   {
-    System.out.println("                                          I just gave back "+ valuables.get(0));
+    System.out.println("\t\t\tI just gave back "+ valuables.get(0).getResourceType());
     return valuables.remove(0);
   }
 
@@ -35,15 +35,15 @@ public class TreasureRoom implements TreasureRoomDoor
 
   @Override public int getSize()
   {
-    System.out.println("                                                                                                                          MY size "+valuables.size());
+    System.out.println("\t\t\tMy size "+valuables.size());
     return valuables.size();
   }
 
-  @Override public void aquireRead()
+  @Override synchronized public void aquireRead()
   {
     k++;
-    System.out.println("acquireRead calls " + k);
-    while (writers > 0 || waitingWriters > 0)
+    System.out.println("AcquireRead calls " + k);
+    while (writers > 0 || waitingWriter)
     {
       try
       {
@@ -59,9 +59,9 @@ public class TreasureRoom implements TreasureRoomDoor
     readers++;
   }
 
-  @Override public void aquireWrite()
+  @Override synchronized public void aquireWrite()
   {
-    waitingWriters++;
+    waitingWriter = true;
     while (readers > 0 || writers > 0)
     {
       try
@@ -73,14 +73,14 @@ public class TreasureRoom implements TreasureRoomDoor
         e.printStackTrace();
       }
     }
-    waitingWriters--;
+    waitingWriter = false;
     writers++;
-    System.out.println("acquireWrite calls " + writers);
+    System.out.println("AcquireWrite calls " + writers);
   }
 
-  @Override public void releaseRead()
+  @Override synchronized public void releaseRead()
   {
-    System.out.println("releaseRead calls ");
+    System.out.println("ReleaseRead calls ");
     readers--;
     if (readers == 0)
     {
@@ -88,7 +88,7 @@ public class TreasureRoom implements TreasureRoomDoor
     }
   }
 
-  @Override public void releaseWrite()
+  @Override synchronized public void releaseWrite()
   {
     writers--;
     System.out.println("releaseWrite calls " + writers);

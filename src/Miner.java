@@ -19,6 +19,7 @@ public class Miner implements Runnable
   {
     while (true)
     {
+      System.out.println("Miner "+name);
       retrievedValuable = mine.getResources();
       System.out.println("I mined "+retrievedValuable.getResourceType());
       work(200);
