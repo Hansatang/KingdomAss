@@ -32,9 +32,9 @@ public class Accountant implements Runnable
       {
         sum += valuable.getWorth();
       }
-    //  spendTime(list.size());
+    // spendTime(list.size());
       treasureRoomDoor.releaseRead();
-     spendTime(list.size());
+  spendTime(list.size());
 
       logger.log("\n" +name+" "+ sum);
       spendTime((int) (Math.random() * 2000 + 1001));
