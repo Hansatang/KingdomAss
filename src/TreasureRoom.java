@@ -16,31 +16,36 @@ public class TreasureRoom implements TreasureRoomDoor
     valuables = new ArrayList<>();
   }
 
-  @Override public void addValuables(ArrayList<Valuable> listOfValuables)
+  @Override synchronized public void addValuables(ArrayList<Valuable> listOfValuables)
   {
+    System.out.println("Treasure add: Thread name " + Thread.currentThread().getName());
     System.out.println("\t\t\tI just added "+listOfValuables.size());
     valuables.addAll(listOfValuables);
   }
 
-  @Override public Valuable retrieveValuables()
+  @Override strictfp public Valuable retrieveValuables()
   {
+    System.out.println("Treasure retrieve: Thread name " + Thread.currentThread().getName());
     System.out.println("\t\t\tI just gave back "+ valuables.get(0).getResourceType());
     return valuables.remove(0);
   }
 
-  @Override public ArrayList<Valuable> lookAtValuables()
+  @Override synchronized public ArrayList<Valuable> lookAtValuables()
   {
+    System.out.println("Treasure look: Thread name " + Thread.currentThread().getName());
     return valuables;
   }
 
-  @Override public int getSize()
+  @Override synchronized public int getSize()
   {
+    System.out.println("Treasure size: Thread name " + Thread.currentThread().getName());
     System.out.println("\t\t\tMy size "+valuables.size());
     return valuables.size();
   }
 
   @Override synchronized public void aquireRead()
   {
+    System.out.println("Treasure aread: Thread name " + Thread.currentThread().getName());
     k++;
     System.out.println("AcquireRead calls " + k);
     while (writers > 0 || waitingWriter)
@@ -61,6 +66,7 @@ public class TreasureRoom implements TreasureRoomDoor
 
   @Override synchronized public void aquireWrite()
   {
+    System.out.println("Treasure awrite: Thread name " + Thread.currentThread().getName());
     waitingWriter = true;
     while (readers > 0 || writers > 0)
     {
@@ -80,6 +86,7 @@ public class TreasureRoom implements TreasureRoomDoor
 
   @Override synchronized public void releaseRead()
   {
+    System.out.println("Treasure rread: Thread name " + Thread.currentThread().getName());
     System.out.println("ReleaseRead calls ");
     readers--;
     if (readers == 0)
@@ -90,6 +97,7 @@ public class TreasureRoom implements TreasureRoomDoor
 
   @Override synchronized public void releaseWrite()
   {
+    System.out.println("Treasure rwrite: Thread name " + Thread.currentThread().getName());
     writers--;
     System.out.println("releaseWrite calls " + writers);
     notifyAll();
