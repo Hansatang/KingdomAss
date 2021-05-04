@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class TreasureRoom implements TreasureRoomDoor
 {
   private ArrayList<Valuable> valuables;
-  private int l = 0;
-  private int k = 0;
   private int readers = 0;
   private int writers = 0;
   private boolean waitingWriter;
@@ -26,7 +24,7 @@ public class TreasureRoom implements TreasureRoomDoor
   @Override strictfp public Valuable retrieveValuables()
   {
     System.out.println("Treasure retrieve: Thread name " + Thread.currentThread().getName());
-    System.out.println("\t\t\tI just gave back "+ valuables.get(0).getResourceType());
+    System.out.println("\t\t\tI just got "+ valuables.get(0).getResourceType());
     return valuables.remove(0);
   }
 
@@ -46,8 +44,6 @@ public class TreasureRoom implements TreasureRoomDoor
   @Override synchronized public void aquireRead()
   {
     System.out.println("Treasure aread: Thread name " + Thread.currentThread().getName());
-    k++;
-    System.out.println("AcquireRead calls " + k);
     while (writers > 0 || waitingWriter)
     {
       try

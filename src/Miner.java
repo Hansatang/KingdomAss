@@ -17,7 +17,7 @@ public class Miner implements Runnable
 
   @Override public void run()
   {
-    while (true)
+    while (mine.getSize()!=0)
     {
       System.out.println("Miner "+name);
       retrievedValuable = mine.getResources();

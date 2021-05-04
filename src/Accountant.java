@@ -25,15 +25,18 @@ public class Accountant implements Runnable
       System.out.println("Accountant");
       treasureRoomDoor.aquireRead();
       list = treasureRoomDoor.lookAtValuables();
-      treasureRoomDoor.releaseRead();
+   //   treasureRoomDoor.releaseRead();
+      System.out.println(list.size());
       for (int i = 0; i < list.size(); i++)
       {
         sum += list.get(i).getWorth();
-        spendTime(1);
       }
-//      treasureRoomDoor.releaseRead();
+
+      treasureRoomDoor.releaseRead();
+      spendTime(list.size());
+
       logger.log("\n" + sum);
-      spendTime((int) (Math.random() * 4000 + 1000));
+      spendTime((int) (Math.random() * 4000 + 1001));
     }
   }
 

@@ -24,13 +24,12 @@ public class King implements Runnable
       System.out.println("\t\t\tIm asking for write");
       treasureRoomDoor.aquireWrite();
       int currentAmount = treasureRoomDoor.getSize();
-      System.out.println(
-          "\t\t\t"+ currentAmount);
+      System.out.println("\t\t\t" + currentAmount);
       for (int i = 0; i < currentAmount; i++)
       {
         list.add(treasureRoomDoor.retrieveValuables());
         worth += list.get(i).getWorth();
-        if (worth > limit)
+        if (worth >= limit)
         {
           break;
         }
@@ -39,25 +38,21 @@ public class King implements Runnable
       {
         System.out.println("\t\t\tParty time");
         list.clear();
+
         System.out.println("\t\t\tIm releasing the write");
-        System.out.println("\t\t\t" + treasureRoomDoor.getSize());
         treasureRoomDoor.releaseWrite();
         spendTime(6000);
       }
       if (worth < limit)
       {
-        System.out.println(
-            "\t\t\tToo poor for party "
-                + worth);
-        treasureRoomDoor.addValuables(list);
+        System.out.println("\t\t\tToo poor for party " + worth);
 
-        System.out.println(
-            "\t\t\tIm releasing the write");
-        System.out.println(
-            "\t\t\t"+ treasureRoomDoor.getSize());
+        treasureRoomDoor.addValuables(list);
+        System.out.println("\t\t\tIm releasing the write");
         treasureRoomDoor.releaseWrite();
         spendTime(2000);
       }
+      worth = 0;
     }
   }
 

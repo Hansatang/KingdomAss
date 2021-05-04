@@ -45,7 +45,7 @@ public class ValuableTransport implements Runnable
         treasureRoomDoor.addValuables(list);
         list.clear();
         worth = 0;
-        work(20000);
+        work(2000);
         System.out.println(name+": End of delivery");
       }
     }
