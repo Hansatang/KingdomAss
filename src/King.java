@@ -19,6 +19,7 @@ public class King implements Runnable
   {
     while (true)
     {
+      System.out.println("King");
       spendTime(4000);
       System.out.println("\t\t\tIm asking for write");
       treasureRoomDoor.aquireWrite();

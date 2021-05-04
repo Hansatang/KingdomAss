@@ -19,8 +19,10 @@ public class Deposit implements DepositInterface
     {
       while (resources.size() == max)
       {
+        System.out.println("Deposit block");
         wait();
       }
+      System.out.println("Deposit unlock");
       resources.add(retrievedValuable);
       notifyAll();
     }
@@ -33,7 +35,6 @@ public class Deposit implements DepositInterface
     {
       while (resources.size() == 0)
       {
-
         wait();
       }
       notifyAll();

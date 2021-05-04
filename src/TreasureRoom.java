@@ -39,7 +39,7 @@ public class TreasureRoom implements TreasureRoomDoor
     return valuables.size();
   }
 
-  @Override public void aquireRead()
+  @Override synchronized public void aquireRead()
   {
     k++;
     System.out.println("AcquireRead calls " + k);
@@ -59,7 +59,7 @@ public class TreasureRoom implements TreasureRoomDoor
     readers++;
   }
 
-  @Override public void aquireWrite()
+  @Override synchronized public void aquireWrite()
   {
     waitingWriter = true;
     while (readers > 0 || writers > 0)

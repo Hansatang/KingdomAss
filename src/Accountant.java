@@ -22,6 +22,7 @@ public class Accountant implements Runnable
   {
     while (true)
     {
+      System.out.println("Accountant");
       treasureRoomDoor.aquireRead();
       int currentAmount = treasureRoomDoor.getSize();
       list = treasureRoomDoor.lookAtValuables();
@@ -30,10 +31,9 @@ public class Accountant implements Runnable
         sum += list.get(i).getWorth();
         spendTime(10);
       }
-
-      logger.log("\n"+sum);
+      logger.log("\n" + sum);
       treasureRoomDoor.releaseRead();
-      spendTime(5000);
+      spendTime((int) (Math.random() * 4000 + 1000));
 
     }
 
