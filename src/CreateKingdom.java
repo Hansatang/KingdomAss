@@ -36,10 +36,10 @@ public class CreateKingdom
     Thread t5 = new Thread(king);
     t5.setName("King");
 
-    Accountant accountant1 = new Accountant(guard);
+    Accountant accountant1 = new Accountant(guard,"Ham");
     Thread t6 = new Thread(accountant1);
     t6.setName("accountant 1");
-    Accountant accountant2 = new Accountant(guard);
+    Accountant accountant2 = new Accountant(guard,"Cheese");
     Thread t7 = new Thread(accountant2);
     t7.setName("accountant 2");
 

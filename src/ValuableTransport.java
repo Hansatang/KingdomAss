@@ -35,17 +35,21 @@ public class ValuableTransport implements Runnable
       System.out.println(
           "Me, " + name + " prepared for transport " + list.get(list.size() - 1)
               .getResourceType() + " but I need " + (limit - worth) + " more");
-      work(50);
+     // work(50);
       worth += list.get(list.size() - 1).getWorth();
       if (worth > limit)
       {
+        System.out.println("\t\t\tIm asking for write to deliver");
+        treasureRoomDoor.aquireWrite();
         System.out.println(
             "Delivered by "+name+": " + list.size() + " valuables and it was worth " + worth
                 + "to the treasury");
         treasureRoomDoor.addValuables(list);
+        treasureRoomDoor.releaseWrite();
+        System.out.println("Complete delivery");
         list.clear();
         worth = 0;
-        work(2000);
+        work(5000);
         System.out.println(name+": End of delivery");
       }
     }
@@ -57,6 +61,7 @@ public class ValuableTransport implements Runnable
     {
       System.out.println("I'm waiting "+name);
       Thread.sleep(sleepTime);
+      System.out.println("I'm done "+sleepTime+name);
     }
     catch (InterruptedException e)
     {

@@ -42,8 +42,10 @@ public class Deposit implements DepositInterface
     {
       while (resources.size() == 0)
       {
+        System.out.println("Transport is waiting");
         wait();
       }
+      System.out.println("Notify all miners");
       notifyAll();
       Valuable valuable = resources.get(resources.size() - 1);
       resources.remove(resources.size() - 1);

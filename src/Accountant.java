@@ -8,13 +8,15 @@ public class Accountant implements Runnable
   private int sum;
   private ArrayList<Valuable> list;
   private Logger logger;
+  private String name;
 
-  public Accountant(TreasureRoomDoor treasureRoomDoor)
+  public Accountant(TreasureRoomDoor treasureRoomDoor,String name)
   {
     this.treasureRoomDoor = treasureRoomDoor;
     this.list = new ArrayList<>();
     this.sum = 0;
     this.logger = Logger.getInstance();
+    this.name=name;
 
   }
 
@@ -22,21 +24,20 @@ public class Accountant implements Runnable
   {
     while (true)
     {
-      System.out.println("Accountant");
+      System.out.println("Accountant "+name);
       treasureRoomDoor.aquireRead();
       list = treasureRoomDoor.lookAtValuables();
-   //   treasureRoomDoor.releaseRead();
       System.out.println(list.size());
-      for (int i = 0; i < list.size(); i++)
+      for (Valuable valuable : list)
       {
-        sum += list.get(i).getWorth();
+        sum += valuable.getWorth();
       }
-
+    //  spendTime(list.size());
       treasureRoomDoor.releaseRead();
-      spendTime(list.size());
+     spendTime(list.size());
 
-      logger.log("\n" + sum);
-      spendTime((int) (Math.random() * 4000 + 1001));
+      logger.log("\n" +name+" "+ sum);
+      spendTime((int) (Math.random() * 2000 + 1001));
     }
   }
 
@@ -44,7 +45,9 @@ public class Accountant implements Runnable
   {
     try
     {
+      System.out.println("Accountant is waiting");
       Thread.sleep(sleepTime);
+      System.out.println("Accountant is done waiting");
     }
     catch (InterruptedException e)
     {

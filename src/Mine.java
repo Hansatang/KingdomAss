@@ -11,7 +11,7 @@ public class Mine
   public Mine()
   {
     this.resources = new ArrayList<>();
-    for (int i = 0; i < 150; i++)
+    for (int i = 0; i < 1000; i++)
     {
       int random = (int) (Math.random() * 3 + 1);
       if (random == 1)
@@ -36,7 +36,7 @@ public class Mine
   {
     System.out.println(getSize());
     int random = (int) (Math.random() * resources.size() - 1);
-    return resources.remove(random);
+    return resources.get(random);
   }
 
   public synchronized int getSize()
