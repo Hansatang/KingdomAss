@@ -42,7 +42,7 @@ public class TreasureRoom implements TreasureRoomDoor
   @Override public void aquireRead()
   {
     k++;
-    System.out.println("acquireRead calls " + k);
+    System.out.println("AcquireRead calls " + k);
     while (writers > 0 || waitingWriter)
     {
       try
@@ -75,12 +75,12 @@ public class TreasureRoom implements TreasureRoomDoor
     }
     waitingWriter = false;
     writers++;
-    System.out.println("acquireWrite calls " + writers);
+    System.out.println("AcquireWrite calls " + writers);
   }
 
   @Override synchronized public void releaseRead()
   {
-    System.out.println("releaseRead calls ");
+    System.out.println("ReleaseRead calls ");
     readers--;
     if (readers == 0)
     {
