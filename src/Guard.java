@@ -6,47 +6,56 @@ public class Guard implements TreasureRoomDoor
 {
   private TreasureRoomDoor treasureRoomDoor;
 
-  public Guard(TreasureRoomDoor treasureRoomDoor) {
+  public Guard(TreasureRoomDoor treasureRoomDoor)
+  {
     this.treasureRoomDoor = treasureRoomDoor;
   }
 
-  @Override
-  public  void addValuables(ArrayList<Valuable> listOfValuables) {
+  /** Method for adding ArrayList of Valuables to existing ArrayList as Proxy */
+  @Override public void addValuables(ArrayList<Valuable> listOfValuables)
+  {
     treasureRoomDoor.addValuables(listOfValuables);
   }
 
-  @Override
-  public  Valuable retrieveValuables() {
+  /** Method for removing first item from ArrayList of Valuables as Proxy */
+  @Override public Valuable retrieveValuables()
+  {
     return treasureRoomDoor.retrieveValuables();
   }
 
-  @Override
-  public  ArrayList<Valuable> lookAtValuables() {
+  /** Method for getting ArrayList of Valuables to existing ArrayList as Proxy */
+  @Override public ArrayList<Valuable> lookAtValuables()
+  {
     return treasureRoomDoor.lookAtValuables();
   }
 
-  @Override  public int getSize()
+  /** Method for getting the size of ArrayList of Valuables as Proxy */
+  @Override public int getSize()
   {
     return treasureRoomDoor.getSize();
   }
 
-  @Override
-  public  void aquireRead() {
+  /** Method for acquiring Read access */
+  @Override public void aquireRead()
+  {
     treasureRoomDoor.aquireRead();
   }
 
-  @Override
-  public  void aquireWrite() {
+  /** Method for acquiring Write access */
+  @Override public void aquireWrite()
+  {
     treasureRoomDoor.aquireWrite();
   }
 
-  @Override
-  public  void releaseRead() {
+  /** Method for releasing Read access */
+  @Override public void releaseRead()
+  {
     treasureRoomDoor.releaseRead();
   }
 
-  @Override
-  public  void releaseWrite() {
+  /** Method for releasing Write access */
+  @Override public void releaseWrite()
+  {
     treasureRoomDoor.releaseWrite();
   }
 

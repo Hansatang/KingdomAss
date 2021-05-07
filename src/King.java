@@ -9,12 +9,14 @@ public class King implements Runnable
   private ArrayList<Valuable> list;
   private int worth = 0;
 
+  /** King constructor, requires a TreasureRoomDoor */
   public King(TreasureRoomDoor treasureRoomDoor)
   {
     this.treasureRoomDoor = treasureRoomDoor;
     this.list = new ArrayList<>();
   }
 
+  /** A run method from Runnable interface */
   @Override public void run()
   {
     while (true)
@@ -56,6 +58,7 @@ public class King implements Runnable
     }
   }
 
+  /** A method to simulate spending time on actions */
   public void spendTime(int sleepTime)
   {
     try

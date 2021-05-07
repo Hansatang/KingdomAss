@@ -14,6 +14,7 @@ public class Logger
     logFile = new File("LogFile.txt");
   }
 
+  /** A simpleton , returning an instance of Logger */
   public static Logger getInstance()
   {
     if (instance == null)
@@ -30,6 +31,7 @@ public class Logger
     return instance;
   }
 
+  /** A method to write a text to file */
   public void log(String text)
   {
     try
