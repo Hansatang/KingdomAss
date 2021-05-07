@@ -11,14 +11,17 @@ public class ValuableTransport implements Runnable
   private DepositInterface deposit;
   private TreasureRoomDoor treasureRoomDoor;
 
-  public ValuableTransport(String name, DepositInterface deposit,TreasureRoomDoor treasureRoomDoor)
+  /** ValuableTransport constructor, requires a name, DepositInterface and TreasureRoomDoor */
+  public ValuableTransport(String name, DepositInterface deposit,
+      TreasureRoomDoor treasureRoomDoor)
   {
     this.name = name;
     this.list = new ArrayList<>();
     this.deposit = deposit;
-    this.treasureRoomDoor=treasureRoomDoor;
+    this.treasureRoomDoor = treasureRoomDoor;
   }
 
+  /** A run method from Runnable interface */
   @Override public void run()
   {
     while (true)
@@ -35,33 +38,33 @@ public class ValuableTransport implements Runnable
       System.out.println(
           "Me, " + name + " prepared for transport " + list.get(list.size() - 1)
               .getResourceType() + " but I need " + (limit - worth) + " more");
-     // work(50);
+      // work(50);
       worth += list.get(list.size() - 1).getWorth();
       if (worth > limit)
       {
         System.out.println("\t\t\tIm asking for write to deliver");
         treasureRoomDoor.aquireWrite();
-        System.out.println(
-            "Delivered by "+name+": " + list.size() + " valuables and it was worth " + worth
-                + "to the treasury");
+        System.out.println("Delivered by " + name + ": " + list.size()
+            + " valuables and it was worth " + worth + "to the treasury");
         treasureRoomDoor.addValuables(list);
         treasureRoomDoor.releaseWrite();
         System.out.println("Complete delivery");
         list.clear();
         worth = 0;
         work(5000);
-        System.out.println(name+": End of delivery");
+        System.out.println(name + ": End of delivery");
       }
     }
   }
 
+  /** A method to simulate delivering Valuables */
   private void work(int sleepTime)
   {
     try
     {
-      System.out.println("I'm waiting "+name);
+      System.out.println("I'm waiting " + name);
       Thread.sleep(sleepTime);
-      System.out.println("I'm done "+sleepTime+name);
+      System.out.println("I'm done " + sleepTime + name);
     }
     catch (InterruptedException e)
     {

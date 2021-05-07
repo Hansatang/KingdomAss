@@ -14,70 +14,59 @@ public class TreasureRoom implements TreasureRoomDoor
     valuables = new ArrayList<>();
   }
 
+  /** Method for adding ArrayList of Valuables to existing ArrayList */
   @Override public synchronized void addValuables(
       ArrayList<Valuable> listOfValuables)
   {
-    System.out.println(
-        "Treasure add: Thread name " + Thread.currentThread().getName());
     System.out.println("\t\t\tI just added " + listOfValuables.size());
     valuables.addAll(listOfValuables);
   }
 
+  /** Method for removing first item from ArrayList of Valuables */
   @Override public synchronized Valuable retrieveValuables()
   {
-    System.out.println(
-        "Treasure retrieve: Thread name " + Thread.currentThread().getName());
     System.out
         .println("\t\t\tI just got " + valuables.get(0).getResourceType());
     return valuables.remove(0);
   }
 
+  /** Method for getting ArrayList of Valuables to existing ArrayList */
   @Override public synchronized ArrayList<Valuable> lookAtValuables()
   {
-    System.out.println(
-        "Treasure look: Thread name " + Thread.currentThread().getName());
     return valuables;
   }
 
+  /** Method for getting the size of ArrayList of Valuables */
   @Override public synchronized int getSize()
   {
-    System.out.println(
-        "Treasure size: Thread name " + Thread.currentThread().getName());
     System.out.println("\t\t\tMy size " + valuables.size());
     return valuables.size();
   }
 
+  /** Method for acquiring Read access */
   @Override public synchronized void aquireRead()
   {
-
-      System.out.println("\t\t\t\t\t\t\t\t\treaders " + readers);
-      System.out.println("\t\t\t\t\t\t\t\t\twriters " + writers);
-      System.out.println(
-          "Treasure aread: Thread name " + Thread.currentThread().getName());
-      while (writers > 0 || waitingWriter > 0)
+    while (writers > 0 || waitingWriter > 0)
+    {
+      try
       {
-        try
-        {
-          System.out.println("Im'waiting");
-          wait();
-        }
-        catch (InterruptedException e)
-        {
-          e.printStackTrace();
-        }
+        System.out.println("Im'waiting");
+        wait();
       }
-      System.out.println("I'm done waiting");
-      readers++;
+      catch (InterruptedException e)
+      {
+        e.printStackTrace();
+      }
+    }
+    System.out.println("I'm done waiting");
+    readers++;
 
   }
 
+  /** Method for acquiring Write access */
   @Override public synchronized void aquireWrite()
   {
-    System.out.println(
-        "Treasure awrite: Thread name " + Thread.currentThread().getName());
     waitingWriter++;
-    System.out.println("\t\t\t\t\t\t\t\t\treaders " + readers);
-    System.out.println("\t\t\t\t\t\t\t\t\twriters " + writers);
     while (readers > 0 || writers > 0)
     {
       try
@@ -95,10 +84,9 @@ public class TreasureRoom implements TreasureRoomDoor
     System.out.println("AcquireWrite calls " + writers);
   }
 
+  /** Method for releasing Read access */
   @Override public synchronized void releaseRead()
   {
-    System.out.println(
-        "Treasure rread: Thread name " + Thread.currentThread().getName());
     System.out.println("ReleaseRead calls ");
     readers--;
     if (readers == 0)
@@ -107,17 +95,11 @@ public class TreasureRoom implements TreasureRoomDoor
     }
   }
 
+  /** Method for releasing Write access */
   @Override public synchronized void releaseWrite()
   {
-    System.out.println(
-        "Treasure rwrite: Thread name " + Thread.currentThread().getName());
     writers--;
     System.out.println("releaseWrite calls " + writers);
     notifyAll();
-  }
-
-  @Override public synchronized String toString()
-  {
-    return "TreasureRoom{" + "valuables=" + valuables + '}';
   }
 }

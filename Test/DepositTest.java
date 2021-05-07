@@ -31,21 +31,6 @@ class DepositTest
     assertThrows(IllegalStateException.class, () -> deposit.addValuables(null));
   }
 
-  //  @Test public void addOverCap() throws InterruptedException
-  //  {
-  //    for (int i = 0; i < deposit.getMax(); i++)
-  //    {
-  //      deposit.addValuables(Valuable.getInstance(ResourceType.GOLD));
-  //    }
-  //   deposit.addValuables(Valuable.getInstance(ResourceType.DIAMOND));
-  //
-  //  }
-
-  //  @Test public void getFromEmpty() throws InterruptedException
-  //  {
-  //    assertThrows(IndexOutOfBoundsException.class, () -> deposit.getValuables());
-  //  }
-
   @Test public void getNormal() throws InterruptedException
   {
     deposit.addValuables(Valuable.getInstance(ResourceType.DIAMOND));
