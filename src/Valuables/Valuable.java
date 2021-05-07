@@ -4,42 +4,62 @@ package Valuables;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Valuable {
+public class Valuable
+{
+    /** Declare objects **/
     private ResourceType resource;
     private static Map<ResourceType, Valuable> allInstances = new HashMap<ResourceType, Valuable>();
     private int worth;
 
-    private Valuable(ResourceType resourceType) {
+    /** Private constructor, requires a resource type **/
+    private Valuable(ResourceType resourceType)
+    {
         this.resource = resourceType;
         this.worth = getWorth(resourceType);
     }
 
-    private int getWorth(ResourceType resourceType) {
+    /** Get method for worth, takes resourceType as parameter **/
+    private int getWorth(ResourceType resourceType)
+    {
         int worth = 0;
-        if (ResourceType.GOLD.equals(resourceType)) {
+        if (ResourceType.GOLD.equals(resourceType))
+        {
             worth = 5;
-        } else if (ResourceType.IRON.equals(resourceType)) {
+        }
+        else if (ResourceType.IRON.equals(resourceType))
+        {
             worth = 3;
-        } else if (ResourceType.DIAMOND.equals(resourceType)) {
+        }
+        else if (ResourceType.DIAMOND.equals(resourceType))
+        {
             worth = 7;
         }
         return worth;
     }
 
-    public int getWorth() {
+    /** Get method for worth **/
+    public int getWorth()
+    {
         return worth;
     }
 
-    public ResourceType getResourceType(){
+    /** Get method for resourceType **/
+    public ResourceType getResourceType()
+    {
         return resource;
     }
 
-    public static Valuable getInstance(ResourceType resourceType) {
+    /** static method that returns an object of this class **/
+    public static Valuable getInstance(ResourceType resourceType)
+    {
         Valuable instance = allInstances.get(resourceType);
-        if (instance == null) {
-            synchronized (allInstances) {
+        if (instance == null)
+        {
+            synchronized (allInstances)
+            {
                 instance = allInstances.get(resourceType);
-                if (instance == null) {
+                if (instance == null)
+                {
                     instance = new Valuable(resourceType);
                     allInstances.put(resourceType, instance);
                 }

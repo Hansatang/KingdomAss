@@ -1,20 +1,28 @@
 public class CreateKingdom
 {
+  /** Main method **/
+
   public static void main(String[] args)
   {
+    /** Declare new objects **/
     Mine mine = new Mine();
     DepositInterface deposit = new Deposit();
     TreasureRoomDoor treasureRoom = new TreasureRoom();
     TreasureRoomDoor guard = new Guard(treasureRoom);
     Miner m1 = new Miner("John", mine, deposit);
     Miner m2 = new Miner("Mike", mine, deposit);
+
+    /** Threads for Miners **/
     Thread t1 = new Thread(m1);
     t1.setName("John");
     Thread t2 = new Thread(m2);
     t2.setName("Mike");
 
+    /** New ValuableTransport objects **/
     ValuableTransport vT1 = new ValuableTransport("Johnatan", deposit, guard);
     ValuableTransport vT2 = new ValuableTransport("Hands", deposit, guard);
+
+    /** Threads for transporters **/
     Thread t3 = new Thread(vT1);
     t3.setName("Johnatan");
     Thread t4 = new Thread(vT2);
