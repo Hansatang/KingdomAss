@@ -6,6 +6,7 @@ public class Guard implements TreasureRoomDoor
 {
   private TreasureRoomDoor treasureRoomDoor;
 
+  /** Guard constructor, requires a TreasureRoomDoor */
   public Guard(TreasureRoomDoor treasureRoomDoor)
   {
     this.treasureRoomDoor = treasureRoomDoor;
