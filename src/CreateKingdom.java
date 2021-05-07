@@ -10,7 +10,7 @@ public class CreateKingdom
     TreasureRoomDoor treasureRoom = new TreasureRoom();
     TreasureRoomDoor guard = new Guard(treasureRoom);
 
-    /** Test for Miners **/
+    /** Declaring miners **/
 
     Miner m1 = new Miner("John", mine, deposit);
     Miner m2 = new Miner("Mike", mine, deposit);
@@ -20,7 +20,7 @@ public class CreateKingdom
     Thread t2 = new Thread(m2);
     t2.setName("Mike");
 
-    /** Test for transport **/
+    /** Declaring valuable transports **/
     ValuableTransport vT1 = new ValuableTransport("Jonathan", deposit, guard);
     ValuableTransport vT2 = new ValuableTransport("Hands", deposit, guard);
 
@@ -29,13 +29,13 @@ public class CreateKingdom
     Thread t4 = new Thread(vT2);
     t4.setName("Hands");
 
-    /** Test for King**/
+    /** Declaring King**/
 
     King king = new King(guard);
     Thread t5 = new Thread(king);
     t5.setName("King");
 
-    /** Test for Accountants **/
+    /** Declaring accountants **/
 
     Accountant accountant1 = new Accountant(guard);
     Thread t6 = new Thread(accountant1);
