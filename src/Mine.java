@@ -8,10 +8,11 @@ public class Mine
 
   private ArrayList<Valuable> resources;
 
+  /** Mine constructor, it populates the ArrayList with Valuables */
   public Mine()
   {
     this.resources = new ArrayList<>();
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10000; i++)
     {
       int random = (int) (Math.random() * 3 + 1);
       if (random == 1)
@@ -32,9 +33,17 @@ public class Mine
     }
   }
 
+  /** Method for removing pseudo random item from ArrayList of Valuables */
   public synchronized Valuable getResources()
   {
+    System.out.println(getSize());
     int random = (int) (Math.random() * resources.size() - 1);
-    return resources.get(random);
+    return resources.remove(random);
+  }
+
+  /** Method for getting the size of ArrayList of Valuables */
+  public synchronized int getSize()
+  {
+    return resources.size();
   }
 }

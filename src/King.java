@@ -9,12 +9,14 @@ public class King implements Runnable
   private ArrayList<Valuable> list;
   private int worth = 0;
 
+  /** King constructor, requires a TreasureRoomDoor */
   public King(TreasureRoomDoor treasureRoomDoor)
   {
     this.treasureRoomDoor = treasureRoomDoor;
     this.list = new ArrayList<>();
   }
 
+  /** A run method from Runnable interface */
   @Override public void run()
   {
     while (true)
@@ -24,13 +26,12 @@ public class King implements Runnable
       System.out.println("\t\t\tIm asking for write");
       treasureRoomDoor.aquireWrite();
       int currentAmount = treasureRoomDoor.getSize();
-      System.out.println(
-          "\t\t\t"+ currentAmount);
+      System.out.println("\t\t\t" + currentAmount);
       for (int i = 0; i < currentAmount; i++)
       {
         list.add(treasureRoomDoor.retrieveValuables());
         worth += list.get(i).getWorth();
-        if (worth > limit)
+        if (worth >= limit)
         {
           break;
         }
@@ -39,28 +40,25 @@ public class King implements Runnable
       {
         System.out.println("\t\t\tParty time");
         list.clear();
+
         System.out.println("\t\t\tIm releasing the write");
-        System.out.println("\t\t\t" + treasureRoomDoor.getSize());
         treasureRoomDoor.releaseWrite();
         spendTime(6000);
       }
       if (worth < limit)
       {
-        System.out.println(
-            "\t\t\tToo poor for party "
-                + worth);
-        treasureRoomDoor.addValuables(list);
+        System.out.println("\t\t\tToo poor for party " + worth);
 
-        System.out.println(
-            "\t\t\tIm releasing the write");
-        System.out.println(
-            "\t\t\t"+ treasureRoomDoor.getSize());
+        treasureRoomDoor.addValuables(list);
+        System.out.println("\t\t\tIm releasing the write");
         treasureRoomDoor.releaseWrite();
         spendTime(2000);
       }
+      worth = 0;
     }
   }
 
+  /** A method to simulate spending time on actions */
   public void spendTime(int sleepTime)
   {
     try

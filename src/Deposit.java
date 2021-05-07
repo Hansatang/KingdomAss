@@ -15,8 +15,6 @@ public class Deposit implements DepositInterface
   @Override public void addValuables(Valuable retrievedValuable)
       throws InterruptedException
   {
-    System.out.println(
-        "Deposit add: Thread name " + Thread.currentThread().getName());
     synchronized (this)
     {
       while (resources.size() == max)
@@ -25,26 +23,38 @@ public class Deposit implements DepositInterface
         wait();
         System.out.println("After block");
       }
-      System.out.println("Deposit unlock");
-      resources.add(retrievedValuable);
+      if (retrievedValuable == null)
+      {
+        throw new IllegalStateException("Variable is null");
+      }
+      else
+      {
+        System.out.println("Deposit unlock");
+        resources.add(retrievedValuable);
+      }
       notifyAll();
     }
   }
 
   @Override public Valuable getValuables() throws InterruptedException
   {
-    System.out.println(
-        "Deposit get: Thread name " + Thread.currentThread().getName());
     synchronized (this)
     {
       while (resources.size() == 0)
       {
+        System.out.println("Transport is waiting");
         wait();
       }
+      System.out.println("Notify all miners");
       notifyAll();
       Valuable valuable = resources.get(resources.size() - 1);
       resources.remove(resources.size() - 1);
       return valuable;
     }
+  }
+
+  public int getMax()
+  {
+    return max;
   }
 }
