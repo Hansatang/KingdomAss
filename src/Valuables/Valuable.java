@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class Valuable
 {
-    /** Declare objects **/
     private ResourceType resource;
     private static Map<ResourceType, Valuable> allInstances = new HashMap<ResourceType, Valuable>();
     private int worth;

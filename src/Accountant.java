@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Accountant implements Runnable
 {
-  /** Declare objects **/
   private TreasureRoomDoor treasureRoomDoor;
   private int sum;
   private ArrayList<Valuable> list;

@@ -9,21 +9,23 @@ public class CreateKingdom
     DepositInterface deposit = new Deposit();
     TreasureRoomDoor treasureRoom = new TreasureRoom();
     TreasureRoomDoor guard = new Guard(treasureRoom);
+
+    /** Test for Miners **/
+
     Miner m1 = new Miner("John", mine, deposit);
     Miner m2 = new Miner("Mike", mine, deposit);
 
-    /** Test for Miners **/
     Thread t1 = new Thread(m1);
     t1.setName("John");
     Thread t2 = new Thread(m2);
     t2.setName("Mike");
 
     /** Test for transport **/
-    ValuableTransport vT1 = new ValuableTransport("Johnatan", deposit, guard);
+    ValuableTransport vT1 = new ValuableTransport("Jonathan", deposit, guard);
     ValuableTransport vT2 = new ValuableTransport("Hands", deposit, guard);
 
     Thread t3 = new Thread(vT1);
-    t3.setName("Johnatan");
+    t3.setName("Jonathan");
     Thread t4 = new Thread(vT2);
     t4.setName("Hands");
 

@@ -7,10 +7,13 @@ public class Deposit implements DepositInterface
   private ArrayList<Valuable> resources;
   private int max = 50;
 
+  /** Constructor **/
   public Deposit()
   {
     this.resources = new ArrayList<>();
   }
+
+  /** Method for adding valuables **/
 
   @Override public void addValuables(Valuable retrievedValuable)
       throws InterruptedException
@@ -36,6 +39,8 @@ public class Deposit implements DepositInterface
     }
   }
 
+  /** Method for getting valuables **/
+
   @Override public Valuable getValuables() throws InterruptedException
   {
     synchronized (this)
@@ -52,6 +57,8 @@ public class Deposit implements DepositInterface
       return valuable;
     }
   }
+
+  /** Method for get max **/
 
   public int getMax()
   {
